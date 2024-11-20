@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 p-3 bg-light" style="margin-bottom:100px;>
+<h2 class="text-center">VIEW ORDER</h2>
+{% for i in orders %}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{i.product.image.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">PRODUCT NAME : {{i.product.name}}</h5>
+        <p class="card-text">CUSTOMER NAME : {{i.customer.name}}</p>
+        <p class="card-text">PRICE : {{i.product.price}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

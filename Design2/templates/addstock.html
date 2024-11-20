@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 style="text-align:center;color:blue;">ADD STOCKS</h1>
+<div class="container"><form  method="post">
+    {% csrf_token %}
+
+     <div class="mb-3">
+    <label class="form-label">STOCK</label>
+        <textarea class="form-control" value="{{pro.stock}}" name="s" ></textarea>
+  </div>
+{% endblock %}

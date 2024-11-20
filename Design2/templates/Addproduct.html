@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 style="text-align:center;color:blue;">ADD PRODUCT DETAILS</h1>
+<div class="container"><form  method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label class="form-label">PRODUCT NAME</label>
+    <input type="text" class="form-control" name="n" placeholder="ENTER PRODUCT NAME">
+  </div>
+    <div class="mb-3">
+    <label class="form-label">IMAGE</label>
+        <input type="file" class="form-control" name="i" >
+  </div>
+    <div class="mb-3">
+    <label class="form-label">DESCRIPTION</label>
+        <textarea class="form-control" name="d" ></textarea>
+  </div>
+
+     <div class="mb-3">
+    <label class="form-label">STOCK</label>
+        <textarea class="form-control" name="s" ></textarea>
+  </div>
+
+    <div class="mb-3">
+    <label class="form-label">PRICE</label>
+        <textarea class="form-control" name="p" ></textarea>
+  </div>
+
+    <div class="mb-3">
+    <label class="form-label">CATEGORY</label>
+        <select name="c">
+            {% for i in links %}
+            <option value="i.name">{{i.name}}</option>
+            {% endfor %}
+        </select>
+
+<button type="submit" class="btn btn-secondary ">Submit</button></form>
+</div>
+{% endblock %}

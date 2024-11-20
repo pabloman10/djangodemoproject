@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<h2 style="text-align:center;color:blue">SHOPPING CART</h2>
+<div class="container" style="color:white">
+
+  <table class="table table-bordered">
+    <tr>
+        <th scope="col">PRODUCT IMAGE</th>
+        <th scope="col">PRODUCT NAME</th>
+        <th scope="col">PRODUCT PRICE</th>
+        <th scope="col">PRODUCT QUANTITY</th>
+        <th scope="col">SUBTOTAL</th>
+        <th scope="col">TOTAL</th>
+        <th scope="col">EDIT</th>
+
+
+    </tr>
+{% for i in cart %}
+    <tr>
+        <td><img src="{{i.product.image.url}}" height="200px" width="100%"></td>
+        <td>{{i.product.name}}</td>
+        <td>{{i.product.price}}</td>
+        <td>{{i.quantity}}</td>
+        <td>Subtotal:{{i.subtotal}}</td>
+        <td>Total:{{total}}</td>
+        <td style="align-content:space-between">
+            {% if i.product.stock > 0 %}
+                <a href="{% url 'cart:addtocart' i.product.id %}"><i class="fa-solid fa-plus"></i></a>
+                <a href="{% url 'cart:cart_remove' i.product.id %}"><i class="fa-solid fa-minus"></i></a>
+                <a href=""><i class="fa-solid fa-trash"></i></a>
+            {% else %}
+                  <a href="{% url 'cart:cart_remove' i.product.id %}"><i class="fa-solid fa-minus"></i></a>
+                  <a href=""><i class="fa-solid fa-trash"></i></a>
+            {% endif %}
+
+           </td>
+
+    </tr>
+    {% endfor %}
+  </table>
+    <a href="{% url 'cart:Orderform' %}" class="btn btn-danger">Place Order</a>
+    <a href="{% url 'shop:Home' %}" class="btn btn-danger">Continue Shopping</a>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h3 class="text-center">SEARCH RESULTS</h3>
+{{book}}
+<div class="container mt-5 p-5">
+    <h1 class="text-center">YOU HAVE SEARCHED FOR <span class="text-light">{{query}}</span></h1>
+    <div class="mx-auto w-75">
+        {% if book == None %}
+        <h4 class="text-center text-danger">NO RESULTS FOUND</h4>
+        {% elif book.exists %}
+
+        <table class="table table-bordered">
+            <tr>BOOK RESULTS</tr>
+        </table>
+
+        {% else %}
+        <h4 class="text-center text-danger">NO RESULTS FOUND</h4>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
